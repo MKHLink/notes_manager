@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const PORT = process.env.PORT || 3001;
+
 const {notes} = require('./db/db.json');
 
 //find by title name fuunction
@@ -27,6 +29,6 @@ app.get('/notes',(req,res)=>{
     res.json(notes);
 });
 
-app.listen(3001,()=>{
-    console.log(`Server started`);
+app.listen(PORT,()=>{
+    console.log(`Server started on ${PORT}`);
 });
