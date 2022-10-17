@@ -1,24 +1,24 @@
 {
-    "notes":
-    [
-        {
-            "id" : "1",
-            "title":"Test Title",
-            "text":"first"
-        },
-
-        {
-            "id" : "2",
-            "title":"Test Title",
-            "text":"second"
-        },
-
-        {
-            "id" : "3",
-            "title":"Test Title",
-            "text":"third"
-        }
-
-    ]
-    
+  "notes": [
+    {
+      "id": "0",
+      "title": "Test Title",
+      "text": "first"
+    },
+    {
+      "id": "1",
+      "title": "Test Title",
+      "text": "second"
+    },
+    {
+      "id": "2",
+      "title": "Test Title",
+      "text": "third"
+    },
+    {
+      "title": "Test Title",
+      "text": "fourth",
+      "id": "3"
+    }
+  ]
 }
