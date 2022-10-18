@@ -32,6 +32,24 @@ function createNote(body, notesArr)
     return note;
 }
 
+function deleteNote(id,notesArr)
+{
+    const newNoteArr = notesArr.filter(note => note.id !== id);
+
+    
+    for(let i=0;i<newNoteArr.length;i++)
+    {
+        newNoteArr[i].id = i.toString();
+    }
+   
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify({notes : newNoteArr}, null , 2)
+    );
+
+    return newNoteArr;
+}
+
 app.get('/notes/:id',(req,res)=>{
     const display = displayNote(req.params.id, notes);
     
@@ -45,17 +63,24 @@ app.get('/notes/:id',(req,res)=>{
     }
 });
 
-app.get('/notes',(req,res)=>{
+app.get('/api/notes',(req,res)=>{
     res.json(notes);
 });
 
-app.post('/notes',(req,res)=>{
+app.post('/api/notes',(req,res)=>{
     req.body.id = notes.length.toString();
 
     const note = createNote(req.body,notes);
 
     res.json(note);
 });
+
+app.delete('/api/notes/:id',(req,res)=>{
+
+    const note = deleteNote(req.params.id,notes);
+
+    res.json(note);
+})
 
 app.listen(PORT,()=>{
     console.log(`Server started on ${PORT}`);

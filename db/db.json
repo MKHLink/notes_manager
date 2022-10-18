@@ -1,24 +1,14 @@
 {
   "notes": [
     {
-      "id": "0",
       "title": "Test Title",
-      "text": "first"
-    },
-    {
-      "id": "1",
-      "title": "Test Title",
-      "text": "second"
-    },
-    {
-      "id": "2",
-      "title": "Test Title",
-      "text": "third"
+      "text": "first",
+      "id": "0"
     },
     {
       "title": "Test Title",
-      "text": "fourth",
-      "id": "3"
+      "text": "fifth",
+      "id": "1"
     }
   ]
 }
