@@ -3,10 +3,13 @@ const {displayNote,
     deleteNote} = require('../../lib/functions');
 
 const router = require('express').Router();
-const {notes} = require('../../db/db.json');
+const fs = require('fs');
+const path = require('path');
 
 
 router.get('/notes/:id',(req,res)=>{
+    const {notes} = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../db/db.json')));
+
     const display = displayNote(req.params.id, notes);
     
     if(display)
@@ -20,10 +23,12 @@ router.get('/notes/:id',(req,res)=>{
 });
 
 router.get('/notes',(req,res)=>{
+    const {notes} = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../db/db.json')));
     res.json(notes);
 });
 
 router.post('/notes',(req,res)=>{
+    const {notes} = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../db/db.json')));
     req.body.id = notes.length.toString();
 
     const note = createNote(req.body,notes);
@@ -32,7 +37,7 @@ router.post('/notes',(req,res)=>{
 });
 
 router.delete('/notes/:id',(req,res)=>{
-
+    const {notes} = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../db/db.json')));
     const note = deleteNote(req.params.id,notes);
 
     res.json(note);
